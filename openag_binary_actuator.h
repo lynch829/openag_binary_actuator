@@ -15,6 +15,7 @@ class BinaryActuator {
 
     // Public functions
     void begin();
+    void update();
     void set_cmd(std_msgs::Bool cmd);
 
   private:

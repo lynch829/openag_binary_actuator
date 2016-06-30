@@ -12,6 +12,8 @@ void setup() {
 std_msgs::Bool cmd;
 
 void loop() {
+  actuator.update();
+
   if (Serial.available()) {
     int res = Serial.parseInt();
     Serial.println(res);
