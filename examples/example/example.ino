@@ -1,20 +1,22 @@
 #include <openag_binary_actuator.h>
 
-#define PIN 6
+#define PIN 4
 
-BinaryActuator actuator(PIN, true);
+BinaryActuator actuator(PIN, false);
 
 void setup() {
   Serial.begin(9600);
   actuator.begin();
 }
 
-std_msgs::Bool state;
+std_msgs::Bool cmd;
 
 void loop() {
   if (Serial.available()) {
-    state.data = (Serial.parseInt() != 0);
-    actuator.set_state(state);
+    int res = Serial.parseInt();
+    Serial.println(res);
+    cmd.data = res != 0;
+    actuator.set_cmd(cmd);
   }
   if (actuator.has_error) {
     Serial.print("Error: ");

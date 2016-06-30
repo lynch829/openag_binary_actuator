@@ -9,8 +9,8 @@ void BinaryActuator::begin() {
   pinMode(_pin, OUTPUT);
 }
 
-void BinaryActuator::set_state(std_msgs::Bool state) {
-  if (state.data ^ _is_active_low) {
+void BinaryActuator::set_cmd(std_msgs::Bool cmd) {
+  if (cmd.data ^ _is_active_low) {
     digitalWrite(_pin, HIGH);
   }
   else {
